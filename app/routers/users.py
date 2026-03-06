@@ -1,6 +1,6 @@
 from app.database import get_db
 from app.models import User
-from app.schemas import DebugUserCreate, UserResponse
+from app.schemas import UserCreate, UserResponse
 
 from fastapi import APIRouter, Depends, HTTPException
 from pwdlib import PasswordHash
@@ -11,8 +11,8 @@ router = APIRouter()
 
 pwd_hash = PasswordHash.recommended()
 
-@router.post("/debug/users", response_model=UserResponse)
-def create_test_user(payload: DebugUserCreate, db: Session = Depends(get_db)):
+@router.post("/users", response_model=UserResponse)
+def create_user(payload: UserCreate, db: Session = Depends(get_db)):
     hashed_password = pwd_hash.hash(payload.password)
 
     test_user = User(

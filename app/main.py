@@ -1,12 +1,9 @@
 from app.database import engine, get_db
-from app.models import Base, User
+from app.models import Base
 from app.routers import users
 
 from fastapi import Depends, FastAPI, HTTPException
-from pwdlib import PasswordHash
-from pydantic import BaseModel, EmailStr, Field
 from sqlalchemy import text
-from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 app = FastAPI()

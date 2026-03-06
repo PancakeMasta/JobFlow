@@ -1,7 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel, EmailStr
 
-class DebugUserCreate(BaseModel):
+class UserCreate(BaseModel):
     email: EmailStr
     password: str
 
